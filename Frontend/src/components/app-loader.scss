@@ -1,0 +1,225 @@
+.app-loader-screen {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at top left, rgba(255, 45, 120, 0.12), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255, 107, 157, 0.08), transparent 28%),
+    #0d1117;
+  color: #e6edf3;
+  animation: loaderFadeIn 0.25s ease;
+}
+
+.app-loader-bubble-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.company-bubble {
+  position: absolute;
+  bottom: -140px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.02) 42%),
+    linear-gradient(145deg, rgba(255, 45, 120, 0.2), rgba(210, 13, 59, 0.08));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #e6edf3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.45rem;
+  font-size: var(--bubble-font-size);
+  font-weight: 700;
+  line-height: 1.05;
+  cursor: pointer;
+  user-select: none;
+  box-shadow:
+    inset 0 1px 10px rgba(255, 255, 255, 0.06),
+    0 10px 30px rgba(0, 0, 0, 0.25);
+  animation-name: bubbleFloat;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
+}
+
+.company-bubble span {
+  pointer-events: none;
+  max-width: 92%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.company-bubble:hover {
+  transform: scale(1.06);
+  box-shadow:
+    inset 0 1px 12px rgba(255, 255, 255, 0.08),
+    0 14px 36px rgba(255, 45, 120, 0.16);
+}
+
+.company-bubble::before {
+  content: "";
+  position: absolute;
+  top: 16%;
+  left: 22%;
+  width: 22%;
+  height: 22%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  filter: blur(1px);
+}
+.company-bubble::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 107, 157, 0.22), transparent 65%);
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.company-bubble.is-popped {
+  animation: bubblePop 0.52s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+
+.company-bubble.is-popped::after {
+  animation: bubbleBurstGlow 0.52s ease forwards;
+}
+
+.app-loader-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 1.6rem 2rem;
+  border-radius: 1.5rem;
+  background: rgba(13, 17, 23, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.app-loader__title {
+  margin: 0;
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.app-loader__white {
+  color: #e6edf3;
+}
+
+.app-loader__red {
+  color: #d20d3b;
+}
+
+.app-loader__subtitle {
+  margin-top: 0.7rem;
+  font-size: 0.95rem;
+  color: #7d8590;
+  animation: subtitlePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes bubbleFloat {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translate3d(calc(var(--bubble-drift) * 0.6), -45vh, 0) scale(1.03);
+  }
+
+  100% {
+    transform: translate3d(var(--bubble-drift), -115vh, 0) scale(1.06);
+    opacity: 0.15;
+  }
+}
+
+@keyframes bubblePop {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  30% {
+    transform: scale(1.22);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  55% {
+    transform: scale(1.08);
+    opacity: 0.95;
+    filter: blur(0.4px);
+  }
+
+  100% {
+    transform: scale(0.18);
+    opacity: 0;
+    filter: blur(3px);
+  }
+}
+
+
+@keyframes bubbleBurstGlow {
+  0% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+
+  35% {
+    opacity: 0.95;
+    transform: scale(1.28);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.85);
+  }
+}
+@keyframes subtitlePulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes loaderFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-loader__title {
+    font-size: 2.1rem;
+  }
+
+  .app-loader-content {
+    padding: 1.2rem 1.4rem;
+    margin: 0 1rem;
+  }
+
+  .company-bubble {
+    font-size: 0.72rem;
+  }
+}

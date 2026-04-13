@@ -3,14 +3,29 @@ import "../style/home.scss"
 import { useInterview } from '../hooks/useInterview.js'
 import { useNavigate } from 'react-router'
 
+
+
 const Home = () => {
 
     const { loading, generateReport,reports } = useInterview()
     const [ jobDescription, setJobDescription ] = useState("")
     const [ selfDescription, setSelfDescription ] = useState("")
+    const [resumeFileName, setResumeFileName] = useState("");
     const resumeInputRef = useRef()
 
     const navigate = useNavigate()
+
+
+        const handleRemoveResume = () => {
+        setResumeFileName("");
+        if (resumeInputRef.current) {
+            resumeInputRef.current.value = "";
+        }
+        };
+
+
+
+
 
 const handleGenerateReport = async () => {
     const resumeFile = resumeInputRef.current.files[0]
@@ -87,8 +102,37 @@ const handleGenerateReport = async () => {
                                 </span>
                                 <p className='dropzone__title'>Click to upload or drag &amp; drop</p>
                                 <p className='dropzone__subtitle'>PDF or DOCX (Max 5MB)</p>
-                                <input ref={resumeInputRef} hidden type='file' id='resume' name='resume' accept='.pdf,.docx' />
+                               <input
+                                ref={resumeInputRef}
+                                hidden
+                                type='file'
+                                id='resume'
+                                name='resume'
+                                accept='.pdf,.docx'
+                                onChange={(e) => {
+                                    const file = e.target.files?.[0];
+                                    setResumeFileName(file ? file.name : "");
+                                }}
+                                />
                             </label>
+                            {resumeFileName && (
+                            <div className="upload-success">
+                                <span className="upload-success__icon">✓</span>
+
+                                <div className="upload-success__content">
+                                <p className="upload-success__title">Resume uploaded</p>
+                                <p className="upload-success__file">{resumeFileName}</p>
+                                </div>
+
+                                <button
+                                type="button"
+                                className="upload-success__remove"
+                                onClick={handleRemoveResume}
+                                >
+                                Remove
+                                </button>
+                            </div>
+                            )}
                         </div>
 
                         {/* OR Divider */}
