@@ -6,12 +6,28 @@
     padding-block: 0.75rem;
     border-radius: 1rem;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
 
     transition: all 0.3s ease-in-out;
 
     &.primary-button{
         background-color: #e1034d;
         color: white;
+    }
+
+    &.ghost-button {
+        background-color: transparent;
+        color: #e6edf3;
+        border: 1px solid #2a3348;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
     }
 
     &:active{
