@@ -21,7 +21,7 @@ $severity-low: #3fb950;
 // ── Page Shell ────────────────────────────────────────────────────────────────
 .interview-page {
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--site-header-height));
     background-color: $bg-page;
     color: $text-primary;
     font-family: $font-stack;
@@ -29,6 +29,11 @@ $severity-low: #3fb950;
     align-items: stretch;
     padding: 1.5rem;
     box-sizing: border-box;
+}
+
+.interview-shell {
+    min-height: 100vh;
+    background-color: $bg-page;
 }
 
 // ── 3-Column Layout ───────────────────────────────────────────────────────────
@@ -107,6 +112,43 @@ $severity-low: #3fb950;
         display: flex;
         align-items: center;
         flex-shrink: 0;
+    }
+}
+
+@media (max-width: 1080px) {
+    .interview-layout {
+        flex-direction: column;
+    }
+
+    .interview-divider {
+        width: 100%;
+        height: 1px;
+    }
+
+    .interview-nav,
+    .interview-sidebar {
+        width: 100%;
+    }
+
+    .interview-content {
+        max-height: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .interview-page {
+        padding: 1rem;
+    }
+
+    .interview-nav,
+    .interview-content,
+    .interview-sidebar {
+        padding: 1.25rem;
+    }
+
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 

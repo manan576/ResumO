@@ -3,6 +3,18 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const tokenBlacklistModel = require("../models/blacklist.model")
 
+function getCookieOptions() {
+    const isProduction = process.env.NODE_ENV === "production"
+    const sameSite = process.env.COOKIE_SAME_SITE || (isProduction ? "none" : "lax")
+
+    return {
+        httpOnly: true,
+        secure: sameSite === "none" ? true : isProduction,
+        sameSite,
+        maxAge: 24 * 60 * 60 * 1000
+    }
+}
+
 /**
  * @name registerUserController
  * @description register a new user, expects username, email and password in the request body
