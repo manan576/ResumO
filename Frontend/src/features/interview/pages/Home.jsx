@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import "../style/home.scss"
 import { useInterview } from '../hooks/useInterview.js'
 import { useNavigate } from 'react-router'
-
+import AppLoader from "../../../components/AppLoader";
 
 
 const Home = () => {
@@ -40,11 +40,7 @@ const handleGenerateReport = async () => {
 }
 
     if (loading) {
-        return (
-            <main className='loading-screen'>
-                <h1>Loading your interview plan...</h1>
-            </main>
-        )
+    return <AppLoader text="Building your interview plan" />;
     }
 
     return (
