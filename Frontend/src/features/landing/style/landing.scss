@@ -7,6 +7,8 @@ $text-primary: #e6edf3;
 $text-muted: #7d8590;
 $accent: #ff2d78;
 $accent-alt: #ff6b9d;
+$neon-cyan: #22d3ee;
+$neon-violet: #a855f7;
 $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
 .landing-page {
@@ -67,25 +69,6 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
   padding-top: 0.2rem;
 }
 
-.landing-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-weight: 700;
-  font-size: 1.05rem;
-
-  &__logo {
-    width: 42px;
-    height: 42px;
-    border-radius: 0.9rem;
-    display: grid;
-    place-items: center;
-    background: linear-gradient(135deg, $accent, $accent-alt);
-    color: white;
-    box-shadow: 0 12px 40px rgba(255, 45, 120, 0.25);
-  }
-}
-
 .landing-navbar__actions {
   display: flex;
   align-items: center;
@@ -99,7 +82,12 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
   outline: none;
   cursor: pointer;
   font-weight: 600;
-  transition: 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
 }
 
 .nav-btn {
@@ -113,8 +101,10 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
     border: 1px solid $border-color;
 
     &:hover {
-      border-color: $accent;
+      border-color: rgba(255, 45, 120, 0.45);
       color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 0 22px rgba(255, 45, 120, 0.16);
     }
   }
 
@@ -124,7 +114,10 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
     box-shadow: 0 12px 30px rgba(255, 45, 120, 0.2);
 
     &:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 0 1px rgba(255, 45, 120, 0.18),
+        0 0 30px rgba(255, 45, 120, 0.22);
     }
   }
 }
@@ -150,6 +143,11 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
     font-size: clamp(2.5rem, 5vw, 4.8rem);
     line-height: 1.05;
     max-width: 680px;
+    transition: text-shadow 0.28s ease;
+  }
+
+  h1:hover {
+    text-shadow: 0 0 18px rgba(255, 45, 120, 0.18);
   }
 
   p {
@@ -169,6 +167,16 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
   color: $accent-alt;
   font-size: 0.85rem;
   font-weight: 600;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.hero-badge:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 45, 120, 0.4);
+  box-shadow: 0 0 18px rgba(255, 45, 120, 0.14);
 }
 
 .hero-cta {
@@ -189,6 +197,9 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
 
     &:hover {
       transform: translateY(-2px);
+      box-shadow:
+        0 0 0 1px rgba(255, 45, 120, 0.18),
+        0 0 34px rgba(255, 45, 120, 0.24);
     }
   }
 
@@ -198,8 +209,10 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
     border: 1px solid $border-color;
 
     &:hover {
-      border-color: $accent;
+      border-color: rgba(255, 45, 120, 0.45);
       color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 0 22px rgba(255, 45, 120, 0.15);
     }
   }
 }
@@ -217,6 +230,20 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
   border-radius: 1rem;
   padding: 1rem;
   backdrop-filter: blur(10px);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 45, 120, 0.32);
+    box-shadow:
+      0 0 0 1px rgba(255, 45, 120, 0.1),
+      0 0 28px rgba(255, 45, 120, 0.12);
+    background: rgba(22, 27, 34, 0.9);
+  }
 
   h3 {
     margin-bottom: 0.4rem;
@@ -244,6 +271,20 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
   padding: 1.5rem;
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(14px);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 45, 120, 0.35);
+    box-shadow:
+      0 0 0 1px rgba(255, 45, 120, 0.12),
+      0 0 42px rgba(255, 45, 120, 0.14);
+    background: linear-gradient(180deg, rgba(30, 37, 52, 0.98), rgba(22, 27, 34, 0.98));
+  }
 
   h2 {
     font-size: 1.3rem;
@@ -263,6 +304,18 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
   font-size: 0.75rem;
   border: 1px solid $border-color;
   color: $text-muted;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    color 0.22s ease,
+    transform 0.22s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 45, 120, 0.35);
+    box-shadow: 0 0 16px rgba(255, 45, 120, 0.12);
+    color: #fff;
+  }
 
   &--accent {
     color: $accent-alt;
@@ -283,6 +336,12 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
   align-items: center;
   gap: 0.8rem;
   color: $text-primary;
+  transition: transform 0.22s ease, color 0.22s ease;
+
+  &:hover {
+    transform: translateX(4px);
+    color: #ffffff;
+  }
 }
 
 .preview-dot {
@@ -324,6 +383,12 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
   font-weight: 700;
   color: white;
   flex-shrink: 0;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.preview-score__ring:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 24px rgba(255, 45, 120, 0.18);
 }
 
 .features-section {
@@ -345,6 +410,11 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
   h2 {
     margin-top: 0.4rem;
     font-size: 2rem;
+    transition: text-shadow 0.25s ease;
+  }
+
+  h2:hover {
+    text-shadow: 0 0 18px rgba(255, 45, 120, 0.16);
   }
 }
 
@@ -359,12 +429,19 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
   border: 1px solid $border-color;
   border-radius: 1rem;
   padding: 1.2rem;
-  transition: 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 
   &:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255, 45, 120, 0.35);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    border-color: rgba(168, 85, 247, 0.35);
+    box-shadow:
+      0 0 0 1px rgba(168, 85, 247, 0.12),
+      0 0 32px rgba(168, 85, 247, 0.14);
+    background: rgba(22, 27, 34, 0.94);
   }
 
   h3 {
@@ -376,46 +453,6 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
     color: $text-muted;
     line-height: 1.6;
     font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 1000px) {
-  .hero-section {
-    grid-template-columns: 1fr;
-    min-height: auto;
-    padding-top: 2rem;
-  }
-
-  .hero-stats,
-  .features-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  .landing-page {
-    padding: 1rem 1rem 3rem;
-  }
-
-  .landing-navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .landing-navbar__actions,
-  .hero-cta {
-    width: 100%;
-    flex-wrap: wrap;
-  }
-
-  .hero-stats,
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-section__left h1 {
-    font-size: 2.3rem;
   }
 }
 
@@ -450,6 +487,8 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
   cursor: default;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  backdrop-filter: blur(10px);
 
   h3 {
     margin: 0.8rem 0 0.55rem;
@@ -486,6 +525,7 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
 
 .flow-card:hover {
   transform: translateY(-6px) scale(1.01);
+  background: rgba(18, 24, 34, 0.96);
 }
 
 .flow-card:hover::before {
@@ -577,6 +617,12 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
     rgba(168, 85, 247, 0.45)
   );
   box-shadow: 0 0 16px rgba(255, 45, 120, 0.16);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.flow-connector:hover .flow-connector__line {
+  transform: scaleX(1.05);
+  box-shadow: 0 0 20px rgba(255, 45, 120, 0.22);
 }
 
 .flow-connector__dot {
@@ -601,6 +647,17 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
 }
 
 @media (max-width: 1000px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: 2rem;
+  }
+
+  .hero-stats,
+  .features-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .flowchart-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -611,11 +668,55 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
 }
 
 @media (max-width: 640px) {
+  .landing-page {
+    padding: 1rem 1rem 3rem;
+    padding-top: 4.5rem;
+  }
+
+  .landing-navbar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 0 2rem;
+    padding-top: 0.2rem;
+  }
+
+  .landing-navbar__actions {
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.55rem;
+    flex-wrap: nowrap;
+    padding-left: 0;
+    width: auto;
+    max-width: calc(100% - 6.5rem);
+  }
+
+  .nav-btn {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .hero-cta {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .hero-stats,
+  .features-grid,
   .flowchart-grid {
     grid-template-columns: 1fr;
   }
 
+  .hero-section__left h1 {
+    font-size: 2.3rem;
+  }
+
   .flow-card {
-    min-height: auto;
+    min-height: 190px;
+    height: 190px;
   }
 }

@@ -94,7 +94,7 @@ const LandingPage = () => {
 
       <section className="hero-section">
         <div className="hero-section__left">
-          <span className="hero-badge">Smart interview preparation</span>
+          
           <h1>
             Build a sharper <span className="highlight">interview strategy</span>{" "}
             in minutes
@@ -144,8 +144,8 @@ const LandingPage = () => {
         <div className="hero-section__right">
           <div className="preview-card">
             <div className="preview-card__top">
-              <span className="preview-pill">AI Analysis</span>
-              <span className="preview-pill preview-pill--accent">Match Score</span>
+              
+              <span className="preview-pill preview-pill--accent">Everything You Need</span>
             </div>
 
             <h2>What the platform gives you</h2>
