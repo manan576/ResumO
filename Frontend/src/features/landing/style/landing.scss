@@ -418,3 +418,204 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
     font-size: 2.3rem;
   }
 }
+
+.flow-section {
+  max-width: 1200px;
+  margin: 4rem auto 0;
+  position: relative;
+  z-index: 2;
+}
+
+.flowchart-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.flow-card {
+  position: relative;
+  min-height: 220px;
+  height: 220px;
+  padding: 1.25rem 1.1rem;
+  border-radius: 1.2rem;
+  background: rgba(18, 24, 34, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    margin: 0.8rem 0 0.55rem;
+    font-size: 1.05rem;
+    color: #e6edf3;
+  }
+
+  p {
+    margin: 0;
+    color: #9aa6b2;
+    line-height: 1.65;
+    font-size: 0.9rem;
+    flex-grow: 1;
+  }
+}
+
+.flow-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+}
+
+.flow-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 42%);
+  pointer-events: none;
+}
+
+.flow-card:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+.flow-card:hover::before {
+  opacity: 1;
+}
+
+.flow-card__step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.flow-card--cyan .flow-card__step {
+  border: 1px solid rgba(34, 211, 238, 0.45);
+  color: #67e8f9;
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.22);
+}
+
+.flow-card--pink .flow-card__step {
+  border: 1px solid rgba(255, 45, 120, 0.45);
+  color: #ff7db0;
+  box-shadow: 0 0 18px rgba(255, 45, 120, 0.22);
+}
+
+.flow-card--violet .flow-card__step {
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  color: #c084fc;
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.22);
+}
+
+.flow-card--cyan:hover {
+  border-color: rgba(34, 211, 238, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(34, 211, 238, 0.15),
+    0 0 35px rgba(34, 211, 238, 0.14);
+}
+
+.flow-card--cyan:hover::before {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.22), transparent 55%);
+}
+
+.flow-card--pink:hover {
+  border-color: rgba(255, 45, 120, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(255, 45, 120, 0.15),
+    0 0 35px rgba(255, 45, 120, 0.14);
+}
+
+.flow-card--pink:hover::before {
+  background: linear-gradient(135deg, rgba(255, 45, 120, 0.22), transparent 55%);
+}
+
+.flow-card--violet:hover {
+  border-color: rgba(168, 85, 247, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(168, 85, 247, 0.15),
+    0 0 35px rgba(168, 85, 247, 0.14);
+}
+
+.flow-card--violet:hover::before {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.22), transparent 55%);
+}
+
+.flow-connector {
+  position: relative;
+  width: 70px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-connector__line {
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(34, 211, 238, 0.45),
+    rgba(255, 45, 120, 0.45),
+    rgba(168, 85, 247, 0.45)
+  );
+  box-shadow: 0 0 16px rgba(255, 45, 120, 0.16);
+}
+
+.flow-connector__dot {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ff2d78;
+  box-shadow: 0 0 16px rgba(255, 45, 120, 0.6);
+  animation: flowPulse 2s ease-in-out infinite;
+}
+
+@keyframes flowPulse {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1000px) {
+  .flowchart-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .flow-connector {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .flowchart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-card {
+    min-height: auto;
+  }
+}

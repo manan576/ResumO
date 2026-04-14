@@ -4,6 +4,35 @@ import "../../landing/style/landing.scss";
 import { useAuth } from "../../auth/hooks/useAuth";
 import AppLoader from "../../../components/AppLoader";
 
+
+const FLOW_STEPS = [
+  {
+    step: "01",
+    title: "Upload Resume",
+    desc: "Add your resume or profile details to start the analysis.",
+    accent: "cyan",
+  },
+  {
+    step: "02",
+    title: "Paste Job Description",
+    desc: "Provide the target role so the platform understands what matters.",
+    accent: "pink",
+  },
+  {
+    step: "03",
+    title: "AI Analysis",
+    desc: "We compare your profile, detect gaps, and identify likely interview focus areas.",
+    accent: "violet",
+  },
+  {
+    step: "04",
+    title: "Get Strategy",
+    desc: "Receive a focused preparation roadmap, match score, and role-specific guidance.",
+    accent: "cyan",
+  },
+];
+
+
 const FEATURES = [
   {
     title: "AI-Powered Interview Plans",
@@ -152,7 +181,31 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+      <section className="flow-section">
+        <div className="section-heading">
+          <span>How it works</span>
+          <h2>From resume to roadmap in four smart steps</h2>
+        </div>
 
+        <div className="flowchart-grid">
+          {FLOW_STEPS.map((item, index) => (
+            <React.Fragment key={item.step}>
+              <div className={`flow-card flow-card--${item.accent}`}>
+                <span className="flow-card__step">{item.step}</span>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </div>
+
+              {index < FLOW_STEPS.length - 1 && (
+                <div className="flow-connector" aria-hidden="true">
+                  <span className="flow-connector__line" />
+                  <span className="flow-connector__dot" />
+                </div>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+      </section>
       <section className="features-section">
         <div className="section-heading">
           <span>Features</span>
