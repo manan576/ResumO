@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { useNavigate, Link } from 'react-router'
 import "../auth.form.scss"
 import { useAuth } from '../hooks/useAuth'
+import AppLoader from "../../../components/AppLoader";
 
 const Login = () => {
 
@@ -14,11 +15,11 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const ok = await handleLogin({ email, password });
-        if (ok) navigate("/home");
+        if (ok) navigate("/");
     }
 
-    if(loading){
-        return (<main><h1>Loading.......</h1></main>)
+    if (loading) {
+    return <AppLoader text="Creating Your Experience" />;
     }
 
 

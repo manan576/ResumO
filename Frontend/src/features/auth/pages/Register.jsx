@@ -2,6 +2,9 @@ import React,{useState} from 'react'
 import { useNavigate, Link } from 'react-router'
 import { useAuth } from '../hooks/useAuth'
 
+import AppLoader from "../../../components/AppLoader";
+
+
 const Register = () => {
 
     const navigate = useNavigate()
@@ -17,8 +20,8 @@ const Register = () => {
         navigate("/home")
     }
 
-    if(loading){
-        return (<main><h1>Loading.......</h1></main>)
+    if (loading) {
+    return <AppLoader text="Creating Your Experience" />;
     }
 
     return (
